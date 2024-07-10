@@ -16,6 +16,7 @@ class TaskModelTestCase(TestCase):
         task.save()
 
         task = Task.objects.get(pk=task.pk)
+        
         self.assertEqual(task.title, 'task1')
         self.assertFalse(task.completed)
         self.assertEqual(task.due_at, due)
@@ -25,6 +26,7 @@ class TaskModelTestCase(TestCase):
         task.save()
 
         task = Task.objects.get(pk=task.pk)
+        
         self.assertEqual(task.title, 'task2')
         self.assertFalse(task.completed)
         self.assertEqual(task.due_at, None)
@@ -59,7 +61,9 @@ class TodoViewTestCase(TestCase):
         response = client.get('/')
 
         self.assertEqual(response.status_code, 200)
+        
         self.assertEqual(response.templates[0].name, 'todo/index.html')
+        
         self.assertEqual(len(response.context['tasks']), 0)
 
     def test_index_post(self):
@@ -67,8 +71,11 @@ class TodoViewTestCase(TestCase):
         data ={'title': 'Test Task', 'due_at': '2024-06-30 23:59:59'}
         response = client.post('/', data)
 
+
         self.assertEqual(response.status_code, 200)
+       
         self.assertEqual(response.templates[0].name,'todo/index.html')
+       
         self.assertEqual(len(response.context['tasks']), 1)
 
     def test_index_get_order_post(self):
