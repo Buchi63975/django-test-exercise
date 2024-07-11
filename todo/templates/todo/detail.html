@@ -23,8 +23,11 @@
     </ul>
 
     <div>
+    <a href="{% url 'index' %}">Top</a>
+    | <a href="{% url 'delete' task.id %}">Delete</a>
       <a href="{% url 'index' %}">Top</a>
+        <a href="{% url 'update' task.id%}">Edit</a>
     </div>
-  </body>
+  </body>it
 
 </html>
