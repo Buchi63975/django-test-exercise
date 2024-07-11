@@ -32,7 +32,17 @@ def detail(request, task_id):
         'task': task
     }
     return render(request, 'todo/detail.html', context)
+  
 
+def delete(request, task_id):
+    try:
+        task = Task.objects.get(pk=task_id)
+    except Task.DoedNotExist:
+        raise Http404("Task does not exist")
+    task.delete()
+    return redirect(index)
+
+  
 def update(request,task_id):
     try:
         task=Task.objects.get(pk=task_id)
@@ -48,4 +58,3 @@ def update(request,task_id):
         'task':task
     }
     return render(request,"todo/edit.html",context)
-    
