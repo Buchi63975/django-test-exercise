@@ -12,7 +12,7 @@
   <body>
     <h1>お悩みを投稿する</h1>
     <p>あなたがぶっちーに相談したいお悩みを、自由に書いてください！</p>
-    <img src="IMG_6214.jpg">
+    <img src="img/IMG_6214.jpg">
 
     <form action="{% url 'update' task.id%}" method="post">
       {% csrf_token %}
@@ -29,8 +29,6 @@
       </div>
     </form>
     <br>
-
-    <img src="img/hub1.jpg" alt="INIAD Hub-1外観図">
   </body>
 
 </html>
